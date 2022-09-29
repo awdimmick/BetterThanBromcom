@@ -1,0 +1,10 @@
+Python:
+https://realpython.com/python-requests/#the-get-request
+
+C#:
+https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpcontent?view=net-6.0
+
+
+
+Postman:
+https://web.postman.co/workspace/My-Workspace~021f41a2-c90e-4e2e-887c-aca037cefce3/request/23539908-7fd1ae24-6916-4d39-940b-32e2ec4eff2c
