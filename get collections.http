@@ -1,0 +1,8 @@
+GET https://cloudmis.bromcom.com/Nucleus/OData/Students?$filter=PreferredLastName eq 'Govey' and PreferredFirstName eq 'George' and TutorGroup eq '9W'
+Authorization: Basic {{username}} {{password}}
+
+###
+GET https://cloudmis.bromcom.com/Nucleus/OData/Collections?$filter=CollectionDescription eq '12B/Cm'
+Authorization: Basic {{username}} {{password}}
+
+

@@ -18,6 +18,15 @@ class BromcomConnector:
         return Student(student_response.json()['value'][0])
 
     @staticmethod
+    def get_student_by_name_tutorgroup(first_name, last_name, tutorgroup):
+        response = BromcomConnector.session.get(
+            Settings.BromcomODataURL +
+            f"Students?$filter=PreferredFirstName eq '{first_name}' and PreferredLastName eq '{last_name}' and TutorGroup eq '{tutorgroup}'"
+        )
+
+        return Student(response.json()['value'][0])
+
+    @staticmethod
     def get_students_for_tutor_group(tutor_group:str):
         students_response = BromcomConnector.session.get(
             Settings.BromcomODataURL +
@@ -35,7 +44,7 @@ class BromcomConnector:
     def get_students_for_class(class_name:str):
 
         student_ids = []
-        students = []
+        students = {}
         students_remaining = True
 
         student_classes = BromcomConnector.session.get(
@@ -62,7 +71,7 @@ class BromcomConnector:
             student_dicts = BromcomConnector.session.get(students_response_url).json()['value']
 
             for student_data in student_dicts:
-                students.append(Student(student_data))
+                students[student_data['StudentId']] = Student(student_data)
 
         return students
 
@@ -76,3 +85,12 @@ class BromcomConnector:
 
         return Collection(collection_response.json()['value'][0])
 
+    @staticmethod
+    def get_collection_by_description(description:str):
+
+        collection_response = BromcomConnector.session.get(
+            Settings.BromcomODataURL +
+            f"Collections?$filter=CollectionDescription eq '{description}'"
+        )
+
+        return Collection(collection_response.json()['value'][0])
